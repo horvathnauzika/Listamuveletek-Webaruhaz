@@ -7,10 +7,10 @@ export function tablazatletrehoz(lista){
     lista.forEach((elem, index) => {
         txt += `<tr>
             <td>${elem.cim}</td>
-            <td><img src="${elem.kep}" alt="kep"></td>
+            <td><img src="${elem.kep}" alt="kep" width="226" height="170"></td>
             <td>${elem.ar}</td>
             <td>${elem.leiras}</td>
-            <td><button id="${index}" class="torol">🗑️</button></td>
+            <td><button id="${index}" class="torol">❌</button></td>
         </tr>`
     });
     txt += "</tbody>"
