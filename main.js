@@ -1,16 +1,19 @@
 import { ADATOK } from "./adat.js";
-import { rendez, szures } from "./adatkezelo.js";
+import { rendez, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
 import { megjelenit, tablazatletrehoz } from "./tablazat.js";
 
 let rIrany = 1;
 init(ADATOK);
+szuresArSzerint();
 szuresCimSzerint();
+szuresLeirasSzerint();
 
 function init(lista) {
   let txt = tablazatletrehoz(lista);
   tablazatletrehoz(lista);
   megjelenit(txt);
   rendezes();
+  torolesemeny();
 }
 
 function rendezes() {
@@ -33,10 +36,35 @@ function rendezes() {
   });
 }
 
-function szuresCimSzerint() {
+function szuresArSzerint() {
   const szuroElem = $("#ar");
   szuroElem.on("keyup", function () {
     let szoveg = szuroElem.val();
-    init(szures(ADATOK, szoveg));
+    init(szuresAr(ADATOK, szoveg));
   });
+}
+
+function szuresCimSzerint() {
+  const szuroElem = $("#szcim");
+  szuroElem.on("keyup", function () {
+    let szoveg = szuroElem.val();
+    init(szuresCim(ADATOK, szoveg));
+  });
+}
+
+function szuresLeirasSzerint() {
+  const szuroElem = $("#szleiras");
+  szuroElem.on("keyup", function () {
+    let szoveg = szuroElem.val();
+    init(szuresLeiras(ADATOK, szoveg));
+  });
+}
+
+function torolesemeny(){
+  const torolELEM=$(".torol")
+  torolELEM.on("click", function(event){
+    let index = event.target.id;
+    const LISTA = torol(ADATOK, index)
+    init(LISTA)
+  })
 }
