@@ -6,11 +6,12 @@ export function tablazatletrehoz(lista){
     txt += "<tbody>";
     lista.forEach((elem, index) => {
         txt += `<tr>
-            <td>${elem.cim}</td>
+            <td id="cim${index}" contentEditable=${elem.szerkesztheto?"true":"false"}>${elem.cim}</td>
             <td><img src="${elem.kep}" alt="kep" width="226" height="170"></td>
-            <td>${elem.ar}</td>
-            <td>${elem.leiras}</td>
+            <td id="ar${index}" contentEditable=${elem.szerkesztheto?"true":"false"}>${elem.ar}</td>
+            <td id="leiras${index}" contentEditable=${elem.szerkesztheto?"true":"false"}>${elem.leiras}</td>
             <td><button id="${index}" class="torol">❌</button></td>
+            <td><button id="${index}" class="szerkeszt">${elem.szerkesztheto?"🥒":"✏️"}</button></td>
         </tr>`
     });
     txt += "</tbody>"

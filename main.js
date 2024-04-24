@@ -1,5 +1,5 @@
 import { ADATOK } from "./adat.js";
-import { rendez, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
+import { rendez, szerkeszt, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
 import { megjelenit, tablazatletrehoz } from "./tablazat.js";
 
 let rIrany = 1;
@@ -14,6 +14,7 @@ function init(lista) {
   megjelenit(txt);
   rendezes();
   torolesemeny();
+  szerkesztesemeny();
 }
 
 function rendezes() {
@@ -65,6 +66,15 @@ function torolesemeny(){
   torolELEM.on("click", function(event){
     let index = event.target.id;
     const LISTA = torol(ADATOK, index)
+    init(LISTA)
+  })
+}
+
+function szerkesztesemeny(){
+  const szerkesztELEM = $(".szerkeszt")
+  szerkesztELEM.on("click", function(event){
+    let index = event.target.id;
+    const LISTA = szerkeszt(ADATOK, index)
     init(LISTA)
   })
 }

@@ -30,3 +30,24 @@ export function torol(lista, index){
   lista.splice(index,1)
   return lista;
 }
+
+export function szerkeszt(lista, index){
+
+  let cimELEM = $(`#cim${index}`)[0]
+  let leirasELEM = $(`#leiras${index}`)[0]
+  let arELEM = $(`#ar${index}`)[0]
+
+  if(lista[index].szerkesztheto){
+    let ujCim = cimELEM.innerHTML
+    let ujLeiras = leirasELEM.innerHTML
+    let ujAr = arELEM.innerHTML
+
+    lista[index].cim = ujCim; 
+    lista[index].leiras = ujLeiras; 
+    lista[index].ar = ujAr; 
+  }
+  // ha true volt, akkor átrakja false-ra és, ha false volt, átrakja true-ra
+  lista[index].szerkesztheto = !lista[index].szerkesztheto
+  
+  return lista;
+}
