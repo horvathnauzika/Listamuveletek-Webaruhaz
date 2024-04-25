@@ -25,3 +25,4 @@ Készíts 3 szűrés mezőt, amiben kiválasztott mezők alapján szűrheted az 
 4. *** szures(lista, kereses); *** -> visszatérési értéke: egy újabb lista, neve szurt_lista - akkor fog lefutni, ha a szűrőmezőben változás történik (keyup) - a listában a mezőkben keres egyezéseket, és szűri a listát ez alapján - filter
 5. *** torol(index, lista); *** - törli a lista indexedik sorát, minden sor mellett lesz egy töröl ikon, amire kattintva megkapjuk az adott sor indexet, és meghívódik a torol függvény
 6. *** kosarbaRak(lista) *** ->  ha a "Kosárba teszem" gombra kattintunk, az adott div adatai átkerülnek a kosárba
+7. *** szerkeszt(lista, index) *** -> visszatérési értéke: lista. Kiválasztja a dokumentumból a cím, a leírás és az ár indexedik elemeit, majd a szerkesztett elemeket új változóba rakja. Ha a lista indexedik elemének szerkeszthetősége true volt, akkor átrakja false-ra, ha false, akkor átrakja true-ra.
