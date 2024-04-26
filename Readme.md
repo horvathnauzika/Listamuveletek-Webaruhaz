@@ -19,10 +19,13 @@ Készíts 3 szűrés mezőt, amiben kiválasztott mezők alapján szűrheted az 
 8. A kiemelt termék mellett megjelenik egy bal és egy jobb léptető gomb, amivel léptetni tudjuk a terméket.
 
 ## Függvények
-1. *** tablazatletrehoz(lista) *** - txt - lista alapján készít egy html kódot, ami egy táblázat, visszatérési értéke az elkészült html szöveget minden sor mellett egy törlés ikonnal
-2. *** megjelenit(txt) *** - txt - megjeleníti a paraméterben kapott szöveget egy adott html elemben
+1. *** kartyaLetrehoz(lista) *** - txt - lista alapján készít egy html kódot, ami egy div card, visszatérési értéke az elkészült html szöveg
+2. *** kartyaMegjelenit(txt) *** - txt - megjeleníti a paraméterben kapott szöveget egy adott html elemben
 3. *** rendez(lista, kulcs, rIrany) *** - rendezett_lista megrendezi a listát az adott paraméter szerint, a megrendezett listát visszaadja, akkor fut le, amikor rákattintunk a táblázat fejlécére
 4. *** szures(lista, kereses); *** -> visszatérési értéke: egy újabb lista, neve szurt_lista - akkor fog lefutni, ha a szűrőmezőben változás történik (keyup) - a listában a mezőkben keres egyezéseket, és szűri a listát ez alapján - filter
 5. *** torol(index, lista); *** - törli a lista indexedik sorát, minden sor mellett lesz egy töröl ikon, amire kattintva megkapjuk az adott sor indexet, és meghívódik a torol függvény
-6. *** kosarbaRak(lista) *** ->  ha a "Kosárba teszem" gombra kattintunk, az adott div adatai átkerülnek a kosárba
-7. *** szerkeszt(lista, index) *** -> visszatérési értéke: lista. Kiválasztja a dokumentumból a cím, a leírás és az ár indexedik elemeit, majd a szerkesztett elemeket új változóba rakja. Ha a lista indexedik elemének szerkeszthetősége true volt, akkor átrakja false-ra, ha false, akkor átrakja true-ra.
+6. tablazatLetrehoz(lista) -> txt - lista alapján készít egy html kódot, ami egy táblázat, visszatérési értéke az elkészült html táblázat
+7. tablazatMegjelenit(txt) -> megjeleníti a paraméterben kapott táblázat szöveget 
+8. kosarbaTesz(lista, kosarlista, index) -> lista indexedik sorát beleteszem a kosarlista-ba
+9. *** kosarEsemeny() *** ->  ha a "Kosárba teszem" gombra kattintunk, meghívódik a kosarbaTesz függvény, majd utána meghívódik a tablazatLetrehoz a lista tartalmával
+10. *** szerkeszt(lista, index) *** -> visszatérési értéke: lista. Kiválasztja a dokumentumból a cím, a leírás és az ár indexedik elemeit, majd a szerkesztett elemeket új változóba rakja. Ha a lista indexedik elemének szerkeszthetősége true volt, akkor átrakja false-ra, ha false, akkor átrakja true-ra.

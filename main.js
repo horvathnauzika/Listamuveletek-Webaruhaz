@@ -1,12 +1,20 @@
 import { ADATOK } from "./adat.js";
 import { rendez, szerkeszt, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
+import { kartyaLetrehoz, kartyaMegjelenit } from "./divek.js";
 import { megjelenit, tablazatletrehoz } from "./tablazat.js";
 
 let rIrany = 1;
 init(ADATOK);
+initKartya(ADATOK);
 szuresArSzerint();
 szuresCimSzerint();
 szuresLeirasSzerint();
+
+function initKartya(lista){
+  let txtKartya = kartyaLetrehoz(lista);
+  kartyaLetrehoz(lista);
+  kartyaMegjelenit(txtKartya);
+}
 
 function init(lista) {
   let txt = tablazatletrehoz(lista);
