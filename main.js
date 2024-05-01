@@ -1,28 +1,31 @@
 import { ADATOK } from "./adat.js";
 import { rendez, szerkeszt, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
-import { kartyaLetrehoz, kartyaMegjelenit } from "./divek.js";
-import { megjelenit, tablazatletrehoz } from "./tablazat.js";
+import { publikusTablazatLetrehoz, publikusTablazatMegjelenit } from "./publikusTablazat.js";
+import { kosarLetrehoz, kosarMegjelenit } from "./kosar.js";
+import { megjelenit, adminTablazatLetrehoz } from "./adminTablazat.js";
 
 let rIrany = 1;
+let kosarTomb = [];
 init(ADATOK);
-initKartya(ADATOK);
 szuresArSzerint();
 szuresCimSzerint();
 szuresLeirasSzerint();
+kosarbaRak();
 
-function initKartya(lista){
-  let txtKartya = kartyaLetrehoz(lista);
-  kartyaLetrehoz(lista);
-  kartyaMegjelenit(txtKartya);
+
+function initPublikusTablazat(lista){
+  let txtKartya = publikusTablazatLetrehoz(lista);
+  publikusTablazatMegjelenit(txtKartya);
 }
 
 function init(lista) {
-  let txt = tablazatletrehoz(lista);
-  tablazatletrehoz(lista);
+  let txt = adminTablazatLetrehoz(lista);
+  adminTablazatLetrehoz(lista);
   megjelenit(txt);
   rendezes();
   torolesemeny();
   szerkesztesemeny();
+  initPublikusTablazat(lista);
 }
 
 function rendezes() {
@@ -46,7 +49,7 @@ function rendezes() {
 }
 
 function szuresArSzerint() {
-  const szuroElem = $("#ar");
+  const szuroElem = $(".kereses_ar");
   szuroElem.on("keyup", function () {
     let szoveg = szuroElem.val();
     init(szuresAr(ADATOK, szoveg));
@@ -54,7 +57,7 @@ function szuresArSzerint() {
 }
 
 function szuresCimSzerint() {
-  const szuroElem = $("#szcim");
+  const szuroElem = $(".kereses_cim");
   szuroElem.on("keyup", function () {
     let szoveg = szuroElem.val();
     init(szuresCim(ADATOK, szoveg));
@@ -86,3 +89,33 @@ function szerkesztesemeny(){
     init(LISTA)
   })
 }
+
+function kosarbaRak(){
+  const GOMB = $('.kosarba')
+  GOMB.on("click", function(event){
+      console.log(event.target.id.replace('pub', ''))
+      let index = event.target.id.replace('pub', '')
+      index = Number(index)
+      let ujElem = ADATOK[index];
+
+      let voltBenne = false
+      kosarTomb.forEach(elem => {
+        if(elem.cim == ujElem.cim){
+          elem.dbszam++;
+          console.log(ujElem)
+          voltBenne = true;
+        }
+        
+      });
+      if (!voltBenne){
+        ujElem.dbszam = 1;
+        kosarTomb.push(ujElem)
+     }
+
+     let txtKosar = kosarLetrehoz(kosarTomb);
+  
+     kosarMegjelenit(txtKosar);
+
+  })
+}
+

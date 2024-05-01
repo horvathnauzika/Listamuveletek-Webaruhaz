@@ -1,4 +1,4 @@
-export function tablazatletrehoz(lista){
+export function adminTablazatLetrehoz(lista){
     let txt = "<div class='table-responsive'><table class='table'>";
     txt += "<thead>";
     txt += "<tr class='table-dark'><th>Cím</th><th>Kép</th><th>Ár (Ft)</th><th>Leírás</th><th></th><th></th></tr>"
