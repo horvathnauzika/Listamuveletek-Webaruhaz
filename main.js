@@ -11,7 +11,7 @@ szuresArSzerint();
 szuresCimSzerint();
 szuresLeirasSzerint();
 kosarbaRak();
-
+rendezes();
 
 function initPublikusTablazat(lista){
   let txtKartya = publikusTablazatLetrehoz(lista);
@@ -22,30 +22,32 @@ function init(lista) {
   let txt = adminTablazatLetrehoz(lista);
   adminTablazatLetrehoz(lista);
   megjelenit(txt);
-  rendezes();
-  torolesemeny();
-  szerkesztesemeny();
   initPublikusTablazat(lista);
+  szerkesztesemeny();
+  torolesemeny();
 }
 
 function rendezes() {
-  const cimMezoELEM = $(".adatok table th").eq(0);
-  cimMezoELEM.on("click", function () {
-    const lista = rendez(ADATOK, "cim", rIrany);
-    console.log(lista);
-    init(lista);
-    rIrany *= -1;
-    console.log(rIrany);
-  });
-
-  const arMezoELEM = $(".adatok table th").eq(2);
-  arMezoELEM.on("click", function () {
-    const lista = rendez(ADATOK, "ar", rIrany);
-    console.log(lista);
-    init(lista);
-    rIrany *= -1;
-    console.log(rIrany);
-  });
+  const SELECT = $(".options")
+  SELECT.on("change", function(){
+    if(this.value == "nev"){
+      const lista = rendez(ADATOK, "cim", rIrany);
+      console.log(lista);
+      init(lista);
+      rIrany *= -1;
+      console.log(rIrany);
+    }
+    else if(this.value == "ar"){
+      const lista = rendez(ADATOK, "ar", rIrany);
+      console.log(lista);
+      init(lista);
+      rIrany *= -1;
+      console.log(rIrany);
+    }
+    else if(this.value == "default"){
+      init(ADATOK)
+    }
+  })
 }
 
 function szuresArSzerint() {
