@@ -1,17 +1,16 @@
 import { ADATOK } from "./adat.js";
-import { rendez, szerkeszt, szuresAr, szuresCim, szuresLeiras, torol } from "./adatkezelo.js";
+import { rendez, szerkeszt, szuresAr, szuresCim, szuresLeiras, torol} from "./adatkezelo.js";
 import { publikusTablazatLetrehoz, publikusTablazatMegjelenit } from "./publikusTablazat.js";
 import { kosarLetrehoz, kosarMegjelenit } from "./kosar.js";
 import { megjelenit, adminTablazatLetrehoz } from "./adminTablazat.js";
 
-let rIrany = 1;
+
 let kosarTomb = [];
 init(ADATOK);
 szuresArSzerint();
 szuresCimSzerint();
 szuresLeirasSzerint();
-kosarbaRak();
-rendezes();
+rendezes(ADATOK);
 
 function initPublikusTablazat(lista){
   let txtKartya = publikusTablazatLetrehoz(lista);
@@ -25,24 +24,31 @@ function init(lista) {
   initPublikusTablazat(lista);
   szerkesztesemeny();
   torolesemeny();
+  kosarbaRak();
 }
 
-function rendezes() {
+function rendezes(ADATOK) {
   const SELECT = $(".options")
   SELECT.on("change", function(){
-    if(this.value == "nev"){
-      const lista = rendez(ADATOK, "cim", rIrany);
+    if(this.value == "nevcsokkeno"){
+      const lista = rendez(ADATOK, "cim", -1);
       console.log(lista);
       init(lista);
-      rIrany *= -1;
-      console.log(rIrany);
     }
-    else if(this.value == "ar"){
-      const lista = rendez(ADATOK, "ar", rIrany);
+    else if(this.value == "nevnovekvo"){
+      const lista = rendez(ADATOK, "cim", 1);
       console.log(lista);
       init(lista);
-      rIrany *= -1;
-      console.log(rIrany);
+    }
+    else if(this.value == "arcsokkeno"){
+      const lista = rendez(ADATOK, "ar", -1);
+      console.log(lista);
+      init(lista);
+    }
+    else if(this.value == "arnovekvo"){
+      const lista = rendez(ADATOK, "ar", 1);
+      console.log(lista);
+      init(lista);
     }
     else if(this.value == "default"){
       init(ADATOK)
@@ -99,13 +105,15 @@ function kosarbaRak(){
       let index = event.target.id.replace('pub', '')
       index = Number(index)
       let ujElem = ADATOK[index];
-
+      console.log(index)
       let voltBenne = false
+      
       kosarTomb.forEach(elem => {
         if(elem.cim == ujElem.cim){
           elem.dbszam++;
           console.log(ujElem)
           voltBenne = true;
+          
         }
         
       });
@@ -117,7 +125,7 @@ function kosarbaRak(){
      let txtKosar = kosarLetrehoz(kosarTomb);
   
      kosarMegjelenit(txtKosar);
-
+     
   })
 }
 
