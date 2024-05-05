@@ -4,7 +4,6 @@ import { publikusTablazatLetrehoz, publikusTablazatMegjelenit } from "./publikus
 import { kosarLetrehoz, kosarMegjelenit } from "./kosar.js";
 import { megjelenit, adminTablazatLetrehoz } from "./adminTablazat.js";
 
-
 let kosarTomb = [];
 init(ADATOK);
 szuresArSzerint();
@@ -89,6 +88,16 @@ function torolesemeny(){
   })
 }
 
+export function kosarTorolEsemeny(){
+  const torolELEM=$(".kosarTorol")
+  torolELEM.on("click", function(event){
+    let index = event.target.id;
+    const LISTA = torol(kosarTomb, index)
+    let txtKosar = kosarLetrehoz(kosarTomb);
+    kosarMegjelenit(txtKosar);
+  })
+}
+
 function szerkesztesemeny(){
   const szerkesztELEM = $(".szerkeszt")
   szerkesztELEM.on("click", function(event){
@@ -125,7 +134,6 @@ function kosarbaRak(){
      let txtKosar = kosarLetrehoz(kosarTomb);
   
      kosarMegjelenit(txtKosar);
-     
   })
 }
 

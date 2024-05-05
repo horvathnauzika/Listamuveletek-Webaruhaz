@@ -1,3 +1,5 @@
+import { kosarTorolEsemeny } from "./main.js";
+
 export function kosarLetrehoz(lista){
     let txt = "<div class='table-responsive'><table class='table'>";
     txt += "<thead>";
@@ -10,7 +12,7 @@ export function kosarLetrehoz(lista){
             <td><img src="${elem.kep}" alt="kep" width="113" height="85"></td>
             <td>${elem.dbszam*elem.ar}</td>
             <td>${elem.dbszam}</td>
-            <td><button id="${index}" class="torol">❌</button></td>
+            <td><button id="${index}" class="kosarTorol">❌</button></td>
         </tr>`
     });
     txt += "</tbody>"
@@ -21,6 +23,7 @@ export function kosarLetrehoz(lista){
 export function kosarMegjelenit(txt){
     const ELEM=$(".kosar")
     ELEM.html(txt)
+    kosarTorolEsemeny();
 }
 
 
