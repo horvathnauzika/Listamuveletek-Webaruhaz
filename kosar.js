@@ -25,5 +25,3 @@ export function kosarMegjelenit(txt){
     ELEM.html(txt)
     kosarTorolEsemeny();
 }
-
-

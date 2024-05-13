@@ -116,7 +116,8 @@ function kosarbaRak(){
       let ujElem = ADATOK[index];
       console.log(index)
       let voltBenne = false
-      
+      let vegosszeg = 0
+
       kosarTomb.forEach(elem => {
         if(elem.cim == ujElem.cim){
           elem.dbszam++;
@@ -124,16 +125,23 @@ function kosarbaRak(){
           voltBenne = true;
           
         }
-        
+
       });
       if (!voltBenne){
         ujElem.dbszam = 1;
         kosarTomb.push(ujElem)
      }
 
+     kosarTomb.forEach(elem =>{
+      vegosszeg += elem.dbszam*elem.ar
+      console.log(vegosszeg)
+     })
+
+     const vegosszegkiir = $('.vegosszeg')
+     vegosszegkiir.html("<p>Végösszeg: " + vegosszeg + " Ft</p>")
+
      let txtKosar = kosarLetrehoz(kosarTomb);
   
      kosarMegjelenit(txtKosar);
   })
 }
-
