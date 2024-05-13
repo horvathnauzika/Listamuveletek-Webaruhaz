@@ -95,6 +95,7 @@ export function kosarTorolEsemeny(){
     const LISTA = torol(kosarTomb, index)
     let txtKosar = kosarLetrehoz(kosarTomb);
     kosarMegjelenit(txtKosar);
+    vegosszegEsemeny();
   })
 }
 
@@ -116,14 +117,12 @@ function kosarbaRak(){
       let ujElem = ADATOK[index];
       console.log(index)
       let voltBenne = false
-      let vegosszeg = 0
-
+      
       kosarTomb.forEach(elem => {
         if(elem.cim == ujElem.cim){
           elem.dbszam++;
           console.log(ujElem)
           voltBenne = true;
-          
         }
 
       });
@@ -132,16 +131,18 @@ function kosarbaRak(){
         kosarTomb.push(ujElem)
      }
 
-     kosarTomb.forEach(elem =>{
-      vegosszeg += elem.dbszam*elem.ar
-      console.log(vegosszeg)
-     })
-
-     const vegosszegkiir = $('.vegosszeg')
-     vegosszegkiir.html("<p>Végösszeg: " + vegosszeg + " Ft</p>")
-
+     vegosszegEsemeny();
      let txtKosar = kosarLetrehoz(kosarTomb);
   
      kosarMegjelenit(txtKosar);
   })
+}
+
+function vegosszegEsemeny(){
+  let vegosszeg = 0
+  kosarTomb.forEach(elem =>{
+    vegosszeg += elem.dbszam*elem.ar
+   })
+   const vegosszegkiir = $('.vegosszeg')
+   vegosszegkiir.html("<p>Végösszeg: " + vegosszeg + " Ft</p>")
 }
