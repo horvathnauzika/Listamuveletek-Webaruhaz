@@ -10,6 +10,7 @@ szuresArSzerint();
 szuresCimSzerint();
 szuresLeirasSzerint();
 rendezes(ADATOK);
+adatokKonzolraIr();
 
 function initPublikusTablazat(lista){
   let txtKartya = publikusTablazatLetrehoz(lista);
@@ -144,5 +145,14 @@ function vegosszegEsemeny(){
     vegosszeg += elem.dbszam*elem.ar
    })
    const vegosszegkiir = $('.vegosszeg')
-   vegosszegkiir.html("<p>Végösszeg: " + vegosszeg + " Ft</p>")
+   vegosszegkiir.html("<h4>Végösszeg: " + vegosszeg + " Ft</h4>")
+}
+
+function adatokKonzolraIr(){
+  const szemelyesAdatForm = $('.urlap')
+  szemelyesAdatForm.on("submit", function(event){
+    for (let index = 0; index < event.target.length; index++) {
+      console.log(event.target[index].id, event.target[index].value)
+    }
+  })
 }

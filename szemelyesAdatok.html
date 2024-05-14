@@ -31,7 +31,7 @@
   <div>
     <h3 style="text-align: center;">Személyes adatok kitöltése a rendeléshez</h3>
 
-    <form>
+    <form class="urlap" action="javascript:alert('Rendelést felvettük');">
       <div class="mb-3 mt-3">
           <label for="vnev">Vezetéknév:</label>
           <input type="text" class="form-control" id="vnev" name="vnev" required>
@@ -86,22 +86,8 @@
                   <input type="text" class="form-control" id="orszag" placeholder="Ország" name="orszag" required><br>
               </div>
           </div>
-          <div class="row">
-              <label for="kartyanev">Bankkártya adatok:</label>
-              <div class="col-md-6" style="margin-bottom: 1%;">
-                  <input type="text" class="form-control" id="kartyanev" placeholder="Kártyán szereplő név" name="kartyanev" required>
-              </div>
-              <div class="col-md-6" style="margin-bottom: 1%;">
-                  <input type="number" class="form-control" id="kartyaszam" placeholder="Kártyaszám" name="kartyaszam" required>
-              </div>
-              <div class="col-md-6">
-                  <input type="number" class="form-control" id="kartyalejarat" placeholder="Lejárati dátum HH / ÉÉ" name="kartyalejarat" required>
-              </div>
-              <div class="col-md-6">
-                  <input type="number" class="form-control" id="cvc" placeholder="CVC szám" name="cvc" required>
-              </div>
           </div><br>
-          <button type="submit" class="btn btn-primary">Rendelés küldése</button>
+          <button type="submit" class="btn btn-primary col-md-1">Rendelés küldése</button>
           
     </form>
     <br>
